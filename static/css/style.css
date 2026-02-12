@@ -4,13 +4,18 @@ body {
     padding: 0;
     background-color: #f4f4f4;
     color: #333;
+    text-align: center;
 }
 
 header {
-    background: #032d58;
-    color: white;
+    background: #f4f4f4;
+    color: rgb(0, 0, 0);
     padding: 10px 20px;
     text-align: center;
+    h3{
+    display: inline;
+    width: 32px;
+    }
 }
 
 nav a {
