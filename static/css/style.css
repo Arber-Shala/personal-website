@@ -3,6 +3,7 @@
   --color-ring: #d6cc3a;
   --color-disc: #c0392b;
   --color-text: #ffffff;
+  --ring-size: min(78vh, 68vw, 640px);
 }
  
 * {
@@ -17,28 +18,36 @@ html, body {
   font-family: "Helvetica Neue", Arial, sans-serif;
 }
  
-/* Hero: badge and nav sit side by side, centered together in the viewport */
+/* Hero centers the whole stage (ring + nav) in the viewport */
 .hero {
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 64px;
-  padding: 40px 32px;
-  flex-wrap: wrap;
+  padding: 40px 20px;
 }
  
-/* Outer ring */
-.badge {
+/* Stage is the positioning context: ring sits in the middle,
+   nav items are placed around its left/right edges */
+.stage {
   position: relative;
-  width: min(50vw, 320px);
-  height: min(50vw, 320px);
+  width: min(96vw, calc(var(--ring-size) + 440px));
+  height: min(90vh, calc(var(--ring-size) + 40px));
+}
+ 
+/* Outer ring, centered in the stage */
+.badge {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: var(--ring-size);
+  height: var(--ring-size);
   border-radius: 50%;
   background: var(--color-ring);
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;
+  animation: badge-in 0.5s ease-out both;
 }
  
 /* Inner disc, inset to create the ring effect */
@@ -55,123 +64,89 @@ html, body {
   position: relative;
   z-index: 1;
   color: var(--color-text);
-  font-size: clamp(28px, 5vw, 40px);
+  font-size: clamp(36px, 9vw, 72px);
   font-weight: 700;
   letter-spacing: 0.5px;
 }
  
-/* Horizontal nav, vertically centered alongside the badge */
+@keyframes badge-in {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.7);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+ 
+/* Nav list spans the whole stage; each item is placed individually */
 .nav-list {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 28px;
-  list-style: none;
-}
- 
-.nav-link {
-  color: var(--color-text);
-  text-decoration: none;
-  font-size: 18px;
-  font-weight: 700;
-  letter-spacing: 0.3px;
-  padding: 6px 2px;
-  border-bottom: 2px solid transparent;
-  transition: border-color 0.2s ease, opacity 0.2s ease;
-}
- 
-.nav-link:hover,
-.nav-link:focus-visible {
-  border-bottom-color: var(--color-ring);
-}
- 
-.nav-link:focus-visible {
-  outline: 2px solid var(--color-ring);
-  outline-offset: 4px;
-}
- 
-.nav-link:active {
-  opacity: 0.8;
-}
- 
-/* Highlight the link for the current page, set by script.js */
-.nav-link.is-active {
-  border-bottom-color: var(--color-ring);
-}
- :root {
-  --color-bg: #1b1464;
-  --color-ring: #d6cc3a;
-  --color-disc: #c0392b;
-  --color-text: #ffffff;
-}
- 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
- 
-html, body {
-  height: 100%;
-  background: var(--color-bg);
-  font-family: "Helvetica Neue", Arial, sans-serif;
-}
- 
-/* Hero: badge and nav sit side by side, centered together in the viewport */
-.hero {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 64px;
-  padding: 40px 32px;
-  flex-wrap: wrap;
-}
- 
-/* Outer ring */
-.badge {
-  position: relative;
-  width: min(50vw, 320px);
-  height: min(50vw, 320px);
-  border-radius: 50%;
-  background: var(--color-ring);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
- 
-/* Inner disc, inset to create the ring effect */
-.badge::after {
-  content: "";
   position: absolute;
-  inset: 4%;
-  border-radius: 50%;
-  background: var(--color-disc);
-  z-index: 0;
-}
- 
-.badge-text {
-  position: relative;
-  z-index: 1;
-  color: var(--color-text);
-  font-size: clamp(28px, 5vw, 40px);
-  font-weight: 700;
-  letter-spacing: 0.5px;
-}
- 
-/* Vertical nav list, centered alongside the badge */
-.nav-list {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
+  inset: 0;
   list-style: none;
+}
+ 
+.nav-item {
+  position: absolute;
+  text-align: left;
+  opacity: 0;
+  animation: pop-out 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+ 
+/* About / Projects sit on the left edge of the stage */
+.nav-item--about {
+  left: 0;
+  top: 32%;
+}
+ 
+.nav-item--projects {
+  left: 0;
+  top: 60%;
+}
+ 
+/* skills / Contact sit on the right edge of the stage */
+.nav-item--skills {
+  right: 0;
+  top: 32%;
+}
+ 
+.nav-item--contact {
+  right: 0;
+  top: 60%;
+}
+ 
+/* Pair up top items and bottom items so they pop in two beats */
+.nav-item--about,
+.nav-item--skills {
+  animation-delay: 0.3s;
+}
+ 
+.nav-item--projects,
+.nav-item--contact {
+  animation-delay: 0.5s;
+}
+ 
+/* Each item travels from the ring's center out to its resting spot */
+@keyframes pop-out {
+  0% {
+    opacity: 0;
+    transform: translate(var(--pop-x), var(--pop-y)) scale(0.25);
+  }
+  65% {
+    opacity: 1;
+    transform: translate(calc(var(--pop-x) * -0.06), calc(var(--pop-y) * -0.06)) scale(1.06);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+  }
 }
  
 .nav-link {
   color: var(--color-text);
   text-decoration: none;
-  font-size: 18px;
+  font-size: 26px;
   font-weight: 700;
   letter-spacing: 0.3px;
   padding: 6px 2px;
@@ -198,37 +173,84 @@ html, body {
   border-bottom-color: var(--color-ring);
 }
  
-/* Responsive: stack nav above badge on narrow screens, both still centered */
-@media (max-width: 640px) {
-  .hero {
-    flex-direction: column;
-    gap: 32px;
-    padding: 32px 20px;
+/* Respect users who'd rather not see motion */
+@media (prefers-reduced-motion: reduce) {
+  .badge,
+  .nav-item {
+    animation: none;
+    opacity: 1;
   }
  
-  .nav-list {
-    align-items: center;
-    gap: 16px;
+  .badge {
+    transform: translate(-50%, -50%);
   }
  
-  .nav-link {
-    font-size: 16px;
+  .nav-item {
+    transform: none;
   }
 }
-/* Responsive: stack badge above nav on narrow screens, both still centered */
+ 
+/* Responsive: drop the absolute "pop around the ring" layout in favor
+   of a simple stacked column, since there isn't room to fan items
+   out to either side of the ring on narrow screens */
 @media (max-width: 640px) {
-  .hero {
+  .stage {
+    width: auto;
+    height: auto;
+    display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 32px;
-    padding: 32px 20px;
+  }
+ 
+  .badge {
+    position: static;
+    animation: badge-in-mobile 0.5s ease-out both;
+  }
+ 
+  @keyframes badge-in-mobile {
+    from {
+      opacity: 0;
+      transform: scale(0.7);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
   }
  
   .nav-list {
-    align-items: center;
+    position: static;
+    inset: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     gap: 16px;
   }
  
+  .nav-item {
+    position: static;
+    text-align: left;
+    animation: fade-up 0.45s ease-out both;
+  }
+ 
+  .nav-item--about { animation-delay: 0.05s; }
+  .nav-item--projects { animation-delay: 0.15s; }
+  .nav-item--skills { animation-delay: 0.25s; }
+  .nav-item--contact { animation-delay: 0.35s; }
+ 
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+ 
   .nav-link {
-    font-size: 16px;
+    font-size: 20px;
   }
 }

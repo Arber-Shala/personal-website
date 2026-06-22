@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const routes = {
     about: "about.html",
     projects: "projects.html",
-    experience: "experience.html",
+    experience: "skills.html",
     contact: "contact.html",
   };
  
