@@ -1,88 +1,234 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-    color: #333;
-    text-align: center;
+:root {
+  --color-bg: #1b1464;
+  --color-ring: #d6cc3a;
+  --color-disc: #c0392b;
+  --color-text: #ffffff;
 }
-
-header {
-    background: #f4f4f4;
-    color: rgb(0, 0, 0);
-    padding: 10px 20px;
-    text-align: center;
-    h3{
-    display: inline;
-    width: 32px;
-    }
+ 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-
-nav a {
-    margin: 0 15px;
-    color: white;
-    text-decoration: none;
+ 
+html, body {
+  height: 100%;
+  background: var(--color-bg);
+  font-family: "Helvetica Neue", Arial, sans-serif;
 }
-
-main {
-    padding: 20px;
+ 
+/* Hero: badge and nav sit side by side, centered together in the viewport */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 64px;
+  padding: 40px 32px;
+  flex-wrap: wrap;
 }
-/* Add this to your existing style.css file */
-
-
-.form-group {
-    margin-bottom: 15px; /* Space between fields */
+ 
+/* Outer ring */
+.badge {
+  position: relative;
+  width: min(50vw, 320px);
+  height: min(50vw, 320px);
+  border-radius: 50%;
+  background: var(--color-ring);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
-
-.form-group label {
-    display: block; /* Make label block-level for stacking */
-    margin-bottom: 5px; /* Space between label and input */
-    font-weight: bold; /* Make the label bold */
+ 
+/* Inner disc, inset to create the ring effect */
+.badge::after {
+  content: "";
+  position: absolute;
+  inset: 4%;
+  border-radius: 50%;
+  background: var(--color-disc);
+  z-index: 0;
 }
-
-input[type="text"],
-input[type="email"],
-textarea {
-    width: 100%; /* Full width of the parent */
-    padding: 10px; /* Space inside the input fields */
-    border: 1px solid #ccc; /* Border color */
-    border-radius: 5px; /* Rounded corners */
+ 
+.badge-text {
+  position: relative;
+  z-index: 1;
+  color: var(--color-text);
+  font-size: clamp(28px, 5vw, 40px);
+  font-weight: 700;
+  letter-spacing: 0.5px;
 }
-
-button {
-    background-color: #007bff; /* Button background color */
-    color: white; /* Button text color */
-    border: none; /* Remove default border */
-    border-radius: 5px; /* Rounded corners */
-    padding: 10px 15px; /* Padding inside the button */
-    cursor: pointer; /* Change cursor on hover */
+ 
+/* Horizontal nav, vertically centered alongside the badge */
+.nav-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 28px;
+  list-style: none;
 }
-
-button:hover {
-    background-color: #0056b3; /* Darker background on hover */
+ 
+.nav-link {
+  color: var(--color-text);
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  padding: 6px 2px;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.2s ease, opacity 0.2s ease;
 }
-
-footer {
-    background-color: #032d58; /* Light background color */
-    padding: 20px; /* Space around the content */
-    color:#f4f4f4;
-    text-align: center; /* Center text */
-    position: relative; /* Ensures footer is positioned relative to its parent */
-    bottom: 0; /* Stick to the bottom of the page */
-    width: 100%; /* Full width */
-    border-top: 1px solid #dee2e6; /* Top border for separation */
+ 
+.nav-link:hover,
+.nav-link:focus-visible {
+  border-bottom-color: var(--color-ring);
 }
-
-footer p {
-    margin: 0; /* Remove default margin */
-    font-size: 16px; /* Font size */
+ 
+.nav-link:focus-visible {
+  outline: 2px solid var(--color-ring);
+  outline-offset: 4px;
 }
-
-footer a {
-    color: #007bff; /* Link color */
-    text-decoration: none; /* Remove underline */
+ 
+.nav-link:active {
+  opacity: 0.8;
 }
-
-footer a:hover {
-    text-decoration: underline; /* Underline on hover */
+ 
+/* Highlight the link for the current page, set by script.js */
+.nav-link.is-active {
+  border-bottom-color: var(--color-ring);
+}
+ :root {
+  --color-bg: #1b1464;
+  --color-ring: #d6cc3a;
+  --color-disc: #c0392b;
+  --color-text: #ffffff;
+}
+ 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+ 
+html, body {
+  height: 100%;
+  background: var(--color-bg);
+  font-family: "Helvetica Neue", Arial, sans-serif;
+}
+ 
+/* Hero: badge and nav sit side by side, centered together in the viewport */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 64px;
+  padding: 40px 32px;
+  flex-wrap: wrap;
+}
+ 
+/* Outer ring */
+.badge {
+  position: relative;
+  width: min(50vw, 320px);
+  height: min(50vw, 320px);
+  border-radius: 50%;
+  background: var(--color-ring);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+ 
+/* Inner disc, inset to create the ring effect */
+.badge::after {
+  content: "";
+  position: absolute;
+  inset: 4%;
+  border-radius: 50%;
+  background: var(--color-disc);
+  z-index: 0;
+}
+ 
+.badge-text {
+  position: relative;
+  z-index: 1;
+  color: var(--color-text);
+  font-size: clamp(28px, 5vw, 40px);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+ 
+/* Vertical nav list, centered alongside the badge */
+.nav-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  list-style: none;
+}
+ 
+.nav-link {
+  color: var(--color-text);
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  padding: 6px 2px;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.2s ease, opacity 0.2s ease;
+}
+ 
+.nav-link:hover,
+.nav-link:focus-visible {
+  border-bottom-color: var(--color-ring);
+}
+ 
+.nav-link:focus-visible {
+  outline: 2px solid var(--color-ring);
+  outline-offset: 4px;
+}
+ 
+.nav-link:active {
+  opacity: 0.8;
+}
+ 
+/* Highlight the link for the current page, set by script.js */
+.nav-link.is-active {
+  border-bottom-color: var(--color-ring);
+}
+ 
+/* Responsive: stack nav above badge on narrow screens, both still centered */
+@media (max-width: 640px) {
+  .hero {
+    flex-direction: column;
+    gap: 32px;
+    padding: 32px 20px;
+  }
+ 
+  .nav-list {
+    align-items: center;
+    gap: 16px;
+  }
+ 
+  .nav-link {
+    font-size: 16px;
+  }
+}
+/* Responsive: stack badge above nav on narrow screens, both still centered */
+@media (max-width: 640px) {
+  .hero {
+    flex-direction: column;
+    gap: 32px;
+    padding: 32px 20px;
+  }
+ 
+  .nav-list {
+    align-items: center;
+    gap: 16px;
+  }
+ 
+  .nav-link {
+    font-size: 16px;
+  }
 }
