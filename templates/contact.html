@@ -4,6 +4,19 @@
     <meta name="viewport" content="width=evice-width, intitial-scale=1.0">
     <title>Contact</title>
     <link rel="stylesheet" href="\static\css\contact.css">
+<!-- *************************************************************************************** -->
+    <!-- EmailJS SDK connection -->
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+    </script>
+    <script type="text/javascript">
+      (function(){
+          emailjs.init({
+            publicKey: "YOUR_PUBLIC_KEY",
+          });
+      })();
+    </script>
+<!-- *************************************************************************************** -->
   </head>
 <body>
     <div class="container">

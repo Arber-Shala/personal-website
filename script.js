@@ -16,7 +16,6 @@ document.addEventListener("DOMContentLoaded", () => {
  
   navLinks.forEach((link) => {
     const page = link.dataset.page;
- 
     // Keep the href in sync with the routes map above.
     if (routes[page]) {
       link.setAttribute("href", routes[page]);
