@@ -30,3 +30,14 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+function sendMail(){
+  let params = {
+    name : document.getElementById("name").value,
+    email : document.getElementById("email").value,
+    phone_number : document.getElementById("phone").value,
+    message : document.getElementById("message").value,
+  }
+
+  emailjs.send(process.env.EMAIL_SERVICE_ID, process.env.EMAIL_TEMPLATE_ID).then(alert("Email Sent!"))
+}
+
