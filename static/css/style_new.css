@@ -1,0 +1,39 @@
+:root {
+  --color-bg: #1b1464;
+  --color-ring: #d6cc3a;
+  --color-disc: #c0392b;
+  --color-text: #ffffff;
+  --ring-size: min(78vh, 68vw, 640px);
+}
+
+body{
+  margin: 0;
+  background: var(--color-bg);
+}
+
+.about{
+  height: 100vh;
+  background: var(--color-bg);
+  box-sizing: border-box;
+  position: absolute;
+  width: 70%;
+  left: 15%;
+  top: 15%;
+  bottom: 15%;
+  padding: 30px;
+  .name{
+    font-size: 100px;
+    color:#ffffff; 
+    text-align:center;
+  }
+  .about_me{
+    color:#ffffff; 
+    font-size: 25px;
+  }
+  .selfie{
+    float:right;
+    height:80vh;
+    width: 50%;
+  }
+}
+
