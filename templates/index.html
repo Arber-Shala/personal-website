@@ -1,38 +1,152 @@
-  <!DOCTYPE html>
-  <html>
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Home</title>
-        <link rel="stylesheet" href="\static\css\style_new.css" />
-    </head>
-    <body> 
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Arber Shala</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="\static\css\style.css" />
+  </head>
+  <body>
 
-        <header id="about" class="about">
-          <h1 class="name">Arber Shala</h1>
-          <img class="selfie" src = "\images\selfie.jpg" alt = "selfie">
-          <p class="about_me">Hi! I'm a computer science graduate from the University of Alberta and an incoming management student at the University of Calgary. My interests lie in the design and organization of database management 
-            systems that power websites and train Ai models. In my free time I am interested in photography and actively learning to play sports such as Tennis and Pickleball. </p>
-        </header>
-        
-        <section id="skils" class="skills">
-          <h2>Skills</h2>
-            
-        </section>
-        <section id="projects">
-          <h2>Projects</h2>
-            
-        </section>
-        <section id="gallery">
-          <h2>Photo Gallery</h2>
-            
-        </section>
-        <section id="contact">
-          <h2>Contact</h2>
-            
-        </section>
-        <footer>
-          <p>&copy; 2026 Arber Shala.</p>
-        </footer>
-    </body>
-  </html>
+    <div class="tabbar" role="navigation" aria-label="Primary">
+      <div class="tabbar-inner">
+        <span class="tabbar-brand">arber<span class="dim">.dev</span></span>
+      </div>
+    </div>
+
+    <header id="about" class="hero">
+      <div class="hero-text">
+        <h1 class="name">Arber Shala</h1>
+        <p class="role">Full-stack developer<span class="cursor" aria-hidden="true">_</span></p>
+        <p class="about-me">
+            Hi! I'm a computer science graduate from the University of Alberta and an incoming management student at the University of Calgary. My interests lie in the design and organization of database management 
+            systems that power websites and train AI models. In my free time I am interested in photography and actively learning to play sports such as Tennis and Pickleball. 
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#projects">View projects</a>
+          <a class="btn btn-primary" href="#contact">Get in touch</a>
+          <a class="btn btn-primary" href="resume.html">Resume</a>
+        </div>
+      </div>
+      <div class="hero-photo">
+        <img src="/images/selfie.jpg" alt="" />
+      </div>
+    </header>
+
+    <main>
+      <section id="skills" class="section skills">
+        <h2>Skills</h2>
+
+        <div class="skill-groups">
+          <div class="skill-group">
+            <h3>Languages</h3>
+            <ul class="chip-list">
+              <li class="chip">Python</li>
+              <li class="chip">Javascript</li>
+              <li class="chip">Go</li>
+              <li class="chip">SQL</li>
+            </ul>
+          </div>
+          <div class="skill-group">
+            <h3>Frameworks</h3>
+            <ul class="chip-list">
+              <li class="chip">Node.js</li>
+              <li class="chip">Django</li>
+            </ul>
+          </div>
+          <div class="skill-group">
+            <h3>Infrastructure</h3>
+            <ul class="chip-list">
+              <li class="chip">PostgreSQL</li>
+              <li class="chip">Docker</li>
+              <li class="chip">Azure</li>
+              <li class="chip">GitHub Actions</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" class="section projects">
+        <h2>Projects</h2>
+
+        <div class="project-grid">
+          <article class="project-card">
+            <div class="project-thumb" aria-hidden="true"></div>
+            <h3>Project One</h3>
+            <p>Short description of the problem this project solved and the impact it had.</p>
+            <ul class="chip-list chip-list-sm">
+              <li class="chip chip-sm">React</li>
+              <li class="chip chip-sm">Node.js</li>
+              <li class="chip chip-sm">PostgreSQL</li>
+            </ul>
+            <a class="project-link" href="#">Github Link &rarr;</a>
+          </article>
+
+          <article class="project-card">
+            <div class="project-thumb" aria-hidden="true"></div>
+            <h3>Project Two</h3>
+            <p>Short description of the problem this project solved and the impact it had.</p>
+            <ul class="chip-list chip-list-sm">
+              <li class="chip chip-sm">Python</li>
+              <li class="chip chip-sm">Django</li>
+              <li class="chip chip-sm">Docker</li>
+            </ul>
+            <a class="project-link" href="#">Github Link &rarr;</a>
+          </article>
+
+          <article class="project-card">
+            <h3>Project Three</h3>
+            <p>Short description of the problem this project solved and the impact it had.</p>
+            <ul class="chip-list chip-list-sm">
+              <li class="chip chip-sm">Go</li>
+              <li class="chip chip-sm">AWS</li>
+            </ul>
+            <a class="project-link" href="#">Girhub Link &rarr;</a>
+          </article>
+        </div>
+      </section>
+
+      <section id="gallery" class="section gallery">
+        <h2>Some photos i've taken</h2>
+        <div class="gallery-grid">
+          <div class="gallery-item">
+            <img src="/images/bridge.jpg" loading="lazy" />
+          </div>
+          <div class="gallery-item">
+            <img src="/images/boat.jpg"  loading="lazy" />
+          </div>
+          <div class="gallery-item">
+            <img src="/images/eagle.jpg"  loading="lazy" />
+          </div>
+          <div class="gallery-item">
+            <img src="/images/lake.jpg"  loading="lazy" />
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="section contact">
+        <h2>Contact</h2>
+        <p class="contact-lead">
+          Open to full-time roles and interesting freelance work. Reach out any time.
+        </p>
+        <div class="contact-links">
+          <a class="btn btn-primary" href="mailto:a.shala3112@gmail.com">a.shala3112@gmail.com</a>
+          <a class="btn btn-primary" href="https://github.com/Arber-Shala" target="_blank" rel="noopener">GitHub</a>
+          <a class="btn btn-primary" href="https://www.linkedin.com/in/arber-shala-83193724a/" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </section>
+    </main>
+
+
+    <div class="bottom-tabbar" role="navigation" aria-label="Primary">
+      <div class="tabbar-inner">
+          <footer class="site-footer">
+            <p>&copy; 2026 Arber Shala.</p>
+          </footer>
+      </div>
+    </div>
+
+  </body>
+</html>
