@@ -1,0 +1,20 @@
+{
+  "name": "personal-website",
+  "version": "1.0.0",
+  "description": "This is the first vestion of my personal website.",
+  "homepage": "https://github.com/Arber-Shala/personal-website#readme",
+  "bugs": {
+    "url": "https://github.com/Arber-Shala/personal-website/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Arber-Shala/personal-website.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
